@@ -63,4 +63,66 @@
       text-shadow: 0 1px 0 rgba(0,0,0,0.18);
     }
 
-    /* Make sure light
+    /* Make sure light swatch text is readable */
+    .swatch-light { color: #1f2937; text-shadow: none; }
+
+    td.code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; font-size: 0.95rem; }
+
+    /* Responsive tweaks */
+    @media (max-width: 560px) {
+      table { font-size: 0.95rem; }
+      .color-swatch { width: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>Color scheme inspired by an "Ocean Sunset"</caption>
+
+    <!-- The scheme name is set as a table header spanning all columns and styled -->
+    <tr>
+      <th class="scheme-name" colspan="4">Ocean Sunset</th>
+    </tr>
+
+    <!-- Column headers -->
+    <tr>
+      <th class="col-header">Color</th>
+      <th class="col-header">Hex</th>
+      <th class="col-header">RGB</th>
+      <th class="col-header">HSL</th>
+    </tr>
+
+    <!-- Row 1: Deep Navy -->
+    <tr>
+      <td class="color-swatch" style="background:#0B3D91;">Deep Navy</td>
+      <td class="code">#0B3D91</td>
+      <td class="code">rgb(11, 61, 145)</td>
+      <td class="code">hsl(222, 88%, 31%)</td>
+    </tr>
+
+    <!-- Row 2: Coral -->
+    <tr>
+      <td class="color-swatch" style="background:#FF6B6B;">Coral</td>
+      <td class="code">#FF6B6B</td>
+      <td class="code">rgb(255, 107, 107)</td>
+      <td class="code">hsl(0, 100%, 71%)</td>
+    </tr>
+
+    <!-- Row 3: Sand -->
+    <tr>
+      <td class="color-swatch swatch-light" style="background:#F2D9A7;">Sandy Shore</td>
+      <td class="code">#F2D9A7</td>
+      <td class="code">rgb(242, 217, 167)</td>
+      <td class="code">hsl(38, 60%, 80%)</td>
+    </tr>
+
+    <!-- Row 4: Teal -->
+    <tr>
+      <td class="color-swatch" style="background:#2AB7A9;">Sea Teal</td>
+      <td class="code">#2AB7A9</td>
+      <td class="code">rgb(42, 183, 169)</td>
+      <td class="code">hsl(174, 68%, 41%)</td>
+    </tr>
+  </table>
+</body>
+</html>
