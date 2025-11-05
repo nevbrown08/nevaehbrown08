@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Three Menus — Breakfast, Lunch, Dinner</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --menu-w: 400px;
+      --menu-h: 550px;
+      --gap: 24px;
+      --radius: 10px;
+    }
+
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue";
+      background: #f3f6f8;
+      margin: 32px;
+      color: #0f172a;
+    }
+
+    h1.page-title{
+      text-align: center;
+      margin-bottom: 28px;
+      font-size: 1.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    .menus {
+      display: flex;
+      gap: var(--gap);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .menu {
+      width: var(--menu-w);
+      height: var(--menu-h);
+      padding: 20px;                 /* padding requirement */
+      margin: 12px;                  /* margin requirement */
+      border-radius: var(--radius);
+      border: 4px solid rgba(0,0,0,0.08); /* border requirement */
+      box-shadow: 0 8px 20px rgba(2,6,23,0.08);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background-size: cover;       /* ensure image scales to fill */
+      background-repeat: no-repeat; /* background-repeat requirement (used on at least one) */
+    }
+
+    /* Each menu uses a unique background image and different background property */
+    .menu.breakfast {
+      /* decorative overlay + image */
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.36)),
+        url("breakfast.jpg");
+      background-position: center top; /* background-position requirement */
+      border-color: #f7c948;
+    }
+
+    .menu.lunch {
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.4)),
+        url("lunch.jpg");
+      background-position: left center; /* different background-position */
+      background-repeat: no-repeat;     /* explicitly set */
+      border-color: #60a5fa;
+    }
+
+    .menu.dinner {
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.5)),
+        url("dinner.jpg");
+      background-position: center center;
+      background-repeat: repeat-y; /* different background-repeat value for variety */
+      border-color: #fb7185;
+    }
+
+    .menu .title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+    }
+
+    .menu .subtitle {
+      font-size: 0.95rem;
+      margin: 0 0 12px 0;
+      opacity: 0.95;
+    }
+
+    .items {
+      background: rgba(255,255,255,0.06);
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 6px;
+      flex: 1 1 auto;
+      overflow: auto;
+    }
+
+    .items ul {
+      margin: 0;
+      padding-left: 1.05rem;
+    }
+
+    .items li {
+      margin: 8px 0;
+      line-height: 1.35;
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      opacity: 0.95;
+      display:flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* Make text on lighter overlays readable */
+    .menu.breakfast .items,
+    .menu.lunch .items,
+    .menu.dinner .items {
+      color: #fff;
+    }
+
+    /* Responsive: stack on small screens */
+    @media (max-width: 1020px) {
+      .menus { gap: 16px; }
+    }
+    @media (max-width: 760px) {
+      .menus { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="page-title">Restaurant Menus — Breakfast, Lunch, Dinner</h1>
+
+  <!-- Note: add breakfast.jpg, lunch.jpg, and dinner.jpg to the same folder as this HTML file (or update the URLs). -->
+  <div class="menus">
+    <!-- Breakfast menu -->
+    <section class="menu breakfast" aria-labelledby="breakfast-title" role="region">
+      <header>
+        <h2 id="breakfast-title" class="title">Morning Harvest — Breakfast</h2>
+        <div class="subtitle">Start your day right</div>
+      </header>
+
+      <div class="items" role="list" aria-label="Breakfast items">
+        <h3 style="margin:0 0 8px 0;font-size:1rem;">Foods</h3>
+        <ul>
+          <li>Buttermilk Pancakes — maple syrup & berries</li>
+          <li>Avocado Toast — multigrain, chili flakes</li>
+          <li>Spinach & Feta Omelette</li>
+          <li>Yogurt Parfait — granola, honey</li>
+        </ul>
+
+        <h3 style="margin:12px 0 8px 0;font-size:1rem;">Drinks</h3>
+        <ul>
+          <li>Freshly Brewed Coffee</li>
+          <li>Orange Juice (fresh)</li>
+          <li>Chai Latte</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <span>Served until 11:30 AM</span>
+        <span>$6 — $12</span>
+      </div>
+    </section>
+
+    <!-- Lunch menu -->
+    <section class="menu lunch" aria-labelledby="lunch-title" role="region">
+      <header>
+        <h2 id="lunch-title" class="title">Midday Market — Lunch</h2>
+        <div class="subtitle">Light & satisfying</div>
+      </header>
+
+      <div class="items" role="list" aria-label="Lunch items">
+        <h3 style="margin:0 0 8px 0;font-size:1rem;">Foods</h3>
+        <ul>
+          <li>Grilled Chicken Caesar Wrap</li>
+          <li>Quinoa & Roasted Veggie Bowl</li>
+          <li>Classic Cheeseburger — house pickles</li>
+          <li>Tomato Basil Soup with crusty bread</li>
+        </ul>
+
+        <h3 style="margin:12px 0 8px 0;font-size:1rem;">Drinks</h3>
+        <ul>
+          <li>Iced Tea — lemon or peach</li>
+          <li>Sparkling Water</li>
+          <li>House-made Lemonade</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <span>Served 11:30 AM — 3:30 PM</span>
+        <span>$8 — $16</span>
+      </div>
+    </section>
+
+    <!-- Dinner menu -->
+    <section class="menu dinner" aria-labelledby="dinner-title" role="region">
+      <header>
+        <h2 id="dinner-title" class="title">Evening Ember — Dinner</h2>
+        <div class="subtitle">Hearty & comforting</div>
+      </header>
+
+      <div class="items" role="list" aria-label="Dinner items">
+        <h3 style="margin:0 0 8px 0;font-size:1rem;">Foods</h3>
+        <ul>
+          <li>Seared Salmon — lemon herb butter</li>
+          <li>Ribeye Steak — garlic mashed potatoes</li>
+          <li>Mushroom Risotto — shaved parmesan</li>
+          <li>Roasted Vegetable Platter</li>
+        </ul>
+
+        <h3 style="margin:12px 0 8px 0;font-size:1rem;">Drinks</h3>
+        <ul>
+          <li>Red or White House Wine</li>
+          <li>Craft Beer Selection</li>
+          <li>Sparkling Cider</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <span>Served from 4:00 PM</span>
+        <span>$14 — $28</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
